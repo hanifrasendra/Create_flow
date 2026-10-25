@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+@theme {
+    /* =========================================
+    COLORS  
+    ==========================================*/
+
+    --color-tools-light: #fffcfc;           /* tools bg light */
+    
+        /* =========================================
+        COLORS HOVER    
+        */
+
+        --color-tools-hover: #dedede;
+        
+
+
+}
+
+:root{
+--background-canvas-light: #ffffff;
+--background-canvas-dark: #3a3a3a;
+
+--color-border-light: #737373;
+--color-border-dark: #9e9d9d;
+}
+
+.tool{
+    @apply flex justify-center items-center h-10 w-auto border-2 rounded-md cursor-pointer
+}
+
+.card{
+    @apply flex justify-center items-center h-14 w-28 rounded-md
+}
+
+.handle{
+    @apply h-5 w-5
+}
