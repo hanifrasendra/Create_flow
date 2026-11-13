@@ -60,6 +60,7 @@
       <div className={`w-screen h-screen flex flex-col`}>
         <Header 
         path={flow.pathLabels}
+        onNavigate={(index) => flow.handleNavigate(index, setNodes, setEdges)}
         />
         <div className={`flex flex-1`}>
           <Aside 

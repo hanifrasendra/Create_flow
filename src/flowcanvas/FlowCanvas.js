@@ -32,12 +32,26 @@ function useFlow() {
         });
     }   
 
+    function handleNavigate(index, setNodes, setEdges) {
+        const newPath = path.slice(0, index + 1);
+        const newLabels = pathLabels.slice(0, index + 1);
+        const newKey = pathToKey(newPath);
+        const targetLevel = levels[newKey] || { nodes: [], edges: [] }
+
+        setPath(newPath);
+        setPathLabels(newLabels);
+        setNodes(targetLevel.nodes);
+        setEdges(targetLevel.edges);
+
+    }
+
     return{
         path,
         pathLabels,
         levels,
         setLevels,
-        onNewLayer
+        onNewLayer,
+        handleNavigate
     }
 }
 

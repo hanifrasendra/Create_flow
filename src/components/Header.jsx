@@ -2,7 +2,7 @@ import '../index.css';
 import { useState } from 'react';
 import { MenuIc } from '../assets/icons/MenuIc'
 import SidebarMenu from './SidebarMenu'
-const Header = ({ path }) => {
+const Header = ({ path, onNavigate }) => {
     const [ isOpen, setIsOpen ] = useState(false);
 
     return(
@@ -22,13 +22,14 @@ const Header = ({ path }) => {
                 </logo>
                 <Breadcrumb
                 path={path}
+                onNavigate={onNavigate}
                 />
             </menu>
         </div>
     )
 }
 
-function Breadcrumb({ path }) {
+function Breadcrumb({ path, onNavigate }) {
     return(
         <nav className="breadcrump">
             {path.map((crumb, i) => {
@@ -39,7 +40,9 @@ function Breadcrumb({ path }) {
                             <span className="bc_current">{crumb}</span>
                         ) : (
                             <span className="bc_link">
-                                <button>{crumb}</button>
+                                <button
+                                onClick={() => onNavigate(i)}
+                                >{crumb}</button>
                                 <span>›</span>
                             </span>
                         )}
