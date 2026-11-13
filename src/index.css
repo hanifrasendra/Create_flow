@@ -6,6 +6,16 @@
     ==========================================*/
 
     --color-tools-light: #fffcfc;           /* tools bg light */
+    --color-tools-hover: #a6a6a6;
+
+    --background-canvas-light: #ffffff;
+    --background-canvas-dark: #3a3a3a;
+
+    --color-border-light: #d1d1d1;
+    --color-border-dark: #bababa;
+
+    --color-bglink-hover: #c7dafc;
+    --color-link-hover: #3b82f6;
     
         /* =========================================
         COLORS HOVER    
@@ -17,12 +27,28 @@
 
 }
 
-:root{
---background-canvas-light: #ffffff;
---background-canvas-dark: #3a3a3a;
+.header{
+    @apply flex items-center h-10 w-auto px-7 border-b border-[var(--color-border-light)] 
+}
 
---color-border-light: #737373;
---color-border-dark: #9e9d9d;
+.header .menu{
+    @apply flex items-center gap-6
+}
+
+.sidebar{
+    @apply fixed inset-y-0 w-45 h-full bg-tools-light left-0 z-50 transform transition-transform duration-300 ease-in-out
+}
+
+.sidebar .headbar{
+    @apply flex justify-between items-center h-10 px-5 border-b
+}
+
+.sidebar .activity_bar{
+    
+}
+
+.sidebar .activity_bar li{
+    @apply hover:bg-tools-hover text-[14px] pl-5 cursor-pointer
 }
 
 .tool{
@@ -35,4 +61,35 @@
 
 .handle{
     @apply h-5 w-5
+}
+
+.properties{
+    @apply h-full w-60 border-l border-[var(--color-border-light)] p-[20px_10px]
+}
+
+.node_tree .file_card{
+    @apply block h-auto 
+}
+.node_tree .file_card .node_card{
+    @apply flex h-8 gap-2 items-center
+}
+
+.node_tree .file_card .node_card .tree_icon{
+    @apply flex h-4 w-4 text-[12px] font-semibold justify-center items-center
+}
+
+.breadcrump{
+    @apply flex w-auto gap-1 text-[14px] font-semibold
+}
+
+.breadcrump span{
+    @apply flex gap-1
+}
+
+.breadcrump span .bc_link{
+    @apply flex gap-1
+}
+
+.breadcrump span .bc_link button{
+    @apply hover:bg-bglink-hover hover:text-link-hover rounded-[5px] cursor-pointer
 }

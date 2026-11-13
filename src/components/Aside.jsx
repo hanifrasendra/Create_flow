@@ -16,7 +16,7 @@ const Aside = ({ onAddNode }) => {
                     <div
                     key={tool.type}
                     onClick={() => onNewNodeHandle(tool)}
-                    className={`tool ${tool.border} ${tool.color}`}
+                    className={`tool ${tool.border} ${tool.color} `}
                     >
                         <label htmlFor="">
                             {tool.label}
