@@ -1,6 +1,8 @@
 import { Component } from 'react';
 import { WebNode, ApiNode, DatabaseNode, ComponentNode } from './CustomNodes'
 
+const STORAGE_KEY = 'fl_beta-v';
+
 const TOOLS_NODE = [
   { 
     type: "web",
@@ -71,6 +73,7 @@ const nodeTypes = {
 
 export {
   TOOLS_NODE,
+  STORAGE_KEY,
   nodeTypes,
   createNewNode,
   editNode,

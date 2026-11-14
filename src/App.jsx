@@ -19,6 +19,16 @@
 
     const flow = useFlow();
 
+    useEffect(() => {
+      flow.Initialize(setNodes, setEdges);
+    }, []);
+
+    useEffect(() => {
+      if(flow.path && flow.pathLabels.length > 1) {
+        flow.setLevelsAndSave(nodes, edges);
+      }
+    }, [nodes, edges])
+
     function onAddNode(node) {
       const centerX = window.innerWidth/2;
       const centerY = window.innerHeight/2;

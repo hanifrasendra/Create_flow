@@ -1,10 +1,27 @@
 import { useState } from 'react';
-import { pathToKey } from './flow'
+import { pathToKey, saveToLocalStorage, loadFromLocalStorage } from './flow';
 
 function useFlow() {
     const [ path, setPath ] = useState(['Main']);
     const [ pathLabels, setPathLabels ] = useState(['Main']);
     const [ levels, setLevels ] = useState({ Main: { nodes: [], edges: [] } }); 
+
+    function setLevelsAndSave(nodes, edges) {
+        saveToLocalStorage({ path, pathLabels, levels, nodes, edges });
+    }
+
+    function Initialize(setNodes, setEdges) {
+        const saved =  loadFromLocalStorage();
+        if(saved) {
+            const key = pathToKey(saved.path)
+            const levelData = saved.levels[key] || { nodes: [], edges: [] }
+            setPath(saved.path);
+            setLevels(saved.levels);
+            setPathLabels(saved.pathLabels);
+            setNodes(levelData.nodes);
+            setEdges(levelData.edges);
+        }
+    }
 
     function onNewLayer(node, nodes, edges, setNodes, setEdges) {
         const currentKey = pathToKey(path);
@@ -51,6 +68,8 @@ function useFlow() {
         levels,
         setLevels,
         onNewLayer,
+        Initialize,
+        setLevelsAndSave,
         handleNavigate
     }
 }
